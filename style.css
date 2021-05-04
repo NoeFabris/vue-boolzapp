@@ -6,4 +6,61 @@
     background-color: #DADBD5;
     height: 85vh;
 }
+.app-main{
+    border: 1px solid black;
+    height: 90vh;
+    width: 70vw;
+    position: absolute;
+    top: 5vh;
+    left: 15vw;
+    padding: 0px;
+    display: flex;
+    /* to remove */
+    background-color: grey;
+}
+.col-sx{
+    width: 30%;
+    height: 100%;
+    background-color: yellow;
+}
+.col-dx{
+    width: 70%;
+    height: 100%;
+    background-color: orange;
+}
+.user-profile{
+    height: 60px;
+    border: 1px solid #D3D3D3;
+    display: flex;
+}
+.user-img img{
+    height: 60px;
+    border-radius: 50%;
+    padding: 8px;
+}
+.user-img{
+    display: flex;
+    flex-grow: 1;
+}
+.user-icons{
+    display: flex;
+    align-items: center;
+}
+.user-icons i{
+    padding: 8px;
+}
 
+
+
+
+
+
+
+
+/* Utility Classes */
+.txt-grey{
+    color: #7F7F7F;
+}
+.bg-lightgrey{
+    background-color: #EDEDED;
+}
