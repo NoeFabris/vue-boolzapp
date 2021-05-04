@@ -15,31 +15,44 @@
         <div class="green-line"></div>
         <div class="grey-line"></div>
      <!-- Section di Boolzapp -->
-        <section class="app-main container">
+        <section id="boolzapp" class="app-main container">
             <section class="col-sx">
      <!-- Creo 4 div differenti per le varie parti del layout -->
-
-                <div class="user-profile bg-lightgrey">
+                <!-- User-profile -->
+                <div class="user-profile bg-lightgrey border-grey">
                     <div class="user-img">
                         <img src="IMG/avatar_2.jpg" alt="">
                     </div>
-                    <div class="user-icons txt-grey">
+                    <div class="user-icons text-grey">
                         <i class="fa fa-spinner" aria-hidden="true"></i>
                         <i class="fa fa-comment-o" aria-hidden="true"></i>
                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                     </div>
                 </div>
-                
-                <div>
-
+                <!-- notifications row -->
+                <div class="notifications bg-lightblue border-grey">
+                    <div class="notification-icon bg-white">
+                        <i class="fa fa-bell-slash" aria-hidden="true"></i>
+                    </div>
+                    <div class="notification-text">
+                        <p><strong>Ricevi notifiche di nuovi messaggi</strong></p>
+                        <a href="#" class="text-grey"><ins>Attiva notifiche desktop</ins></a>
+                    </div>
                 </div>
-
-                <div>
-
+                <!-- search bar -->
+                <div class="search-bar bg-lightgrey border-grey">
+                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    <i class="fa fa-search text-grey" aria-hidden="true"></i>
                 </div>
+                <!-- contacts list  -->
+                <div class="contacts bg-white border-grey" >
+                    <li v-for></li>
+                    <div class="contact-img">
 
-                <div>
+                    </div>
+                    <div class="contact-text">
 
+                    </div>
                 </div>
 
             </section>
