@@ -1,15 +1,7 @@
-const app = new Vue ({
-        el: '#boolzapp', 
-        data: {
-            usersList: globalUsersList,
-        }
-
-})
-
 const globalUsersList = [
     {
         name: 'Michele',
-        avatar: '_1',
+        avatar: 'IMG/avatar_1.jpg',
         visible: true,
         messages: [
             {
@@ -31,7 +23,7 @@ const globalUsersList = [
     },
     {
         name: 'Fabio',
-        avatar: '_2',
+        avatar: 'IMG/avatar_2.jpg',
         visible: true,
         messages: [
             {
@@ -52,7 +44,7 @@ const globalUsersList = [
         ],
     }, {
         name: 'Samuele',
-        avatar: '_3',
+        avatar: 'IMG/avatar_3.jpg',
         visible: true,
         messages: [
             {
@@ -74,7 +66,7 @@ const globalUsersList = [
     },
     {
         name: 'Luisa',
-        avatar: '_4',
+        avatar: 'IMG/avatar_4.jpg',
         visible: true,
         messages: [
             {
@@ -89,4 +81,43 @@ const globalUsersList = [
             }
         ],
     },
+    {
+        name: 'Luisa',
+        avatar: 'IMG/avatar_4.jpg',
+        visible: true,
+        messages: [],
+    },
+    {
+        name: 'Luisa',
+        avatar: 'IMG/avatar_4.jpg',
+        visible: true,
+        messages: [],
+    },
+    {
+        name: 'Luisa',
+        avatar: 'IMG/avatar_4.jpg',
+        visible: true,
+        messages: [],
+    },
+    {
+        name: 'Luisa',
+        avatar: 'IMG/avatar_4.jpg',
+        visible: true,
+        messages: [],
+    },
+    {
+        name: 'Luisa',
+        avatar: 'IMG/avatar_4.jpg',
+        visible: true,
+        messages: [],
+    },
 ];
+
+
+const app = new Vue ({
+        el: '#boolzapp', 
+        data: {
+            usersList: globalUsersList,
+        }
+
+})

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
     <title>Boolzapp</title>
 </head>
 <body>
@@ -45,21 +46,29 @@
                     <i class="fa fa-search text-grey" aria-hidden="true"></i>
                 </div>
                 <!-- contacts list  -->
-                <div class="contacts bg-white border-grey" >
-                    <li v-for></li>
-                    <div class="contact-img">
-
-                    </div>
-                    <div class="contact-text">
-
-                    </div>
-                </div>
+                <ul>
+                    <li v-for='contact in usersList'>
+                        <div class="contacts bg-white border-grey" >
+                            <img :src="contact.avatar" alt="" class="contact-img">
+                            <div class="contact-text">
+                               <strong>{{ contact.name }}</strong>
+                               <p class="text-grey">Non ci sono nuovi messaggi!</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <!-- <ol>
+                    <li v-for='contact in usersList' :key='contact.name'>
+                        {{ contact.name }}
+                    </li>
+                </ol> -->
 
             </section>
             <section class="col-dx">
 
             </section>
         </section>
+        <script src="app.js"></script>
     </main>
 </body>
 </html>

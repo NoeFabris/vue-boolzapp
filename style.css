@@ -1,3 +1,13 @@
+ul li{
+    list-style: none;
+}
+ul{
+    margin: 0px;
+    padding: 0px;
+}
+p {
+    margin: 0;
+}
 .green-line{
     background-color: #009788;
     height: 15vh;
@@ -21,6 +31,9 @@
     width: 30%;
     height: 100%;
     background-color: yellow;
+    /* display: flex;
+    flex-direction: column;
+    flex-grow: 1; */
 }
 .col-dx{
     width: 70%;
@@ -72,9 +85,6 @@
     flex-direction: column;
     align-content: center;
 }
-.notification-text p{
-    margin: 0;
-}
 .notification-text a:hover{
     color: #7F7F7F;
 }
@@ -101,8 +111,20 @@
 .contacts{
     height: 80px;
     width: 100%;
-}
+    display: flex;
+    align-items: center;
 
+}
+.contact-img{
+    height: 80px;
+    border-radius: 50%;
+    padding: 8px;
+}
+.contact-text{
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+}
 
 
 
