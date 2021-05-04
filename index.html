@@ -20,12 +20,12 @@
             <section class="col-sx">
      <!-- Creo 4 div differenti per le varie parti del layout -->
                 <!-- User-profile -->
-                <div class="user-profile bg-lightgrey border-grey">
+                <div class="user-profile bg-lightgrey border-grey border-grey-top">
                     <div class="user-img">
                         <img src="IMG/avatar_2.jpg" alt="">
                     </div>
                     <div class="user-icons text-grey">
-                        <i class="fa fa-spinner" aria-hidden="true"></i>
+                        <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
                         <i class="fa fa-comment-o" aria-hidden="true"></i>
                         <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                     </div>
@@ -46,26 +46,57 @@
                     <i class="fa fa-search text-grey" aria-hidden="true"></i>
                 </div>
                 <!-- contacts list  -->
-                <ul>
-                    <li v-for='contact in usersList'>
-                        <div class="contacts bg-white border-grey" >
-                            <img :src="contact.avatar" alt="" class="contact-img">
-                            <div class="contact-text">
-                               <strong>{{ contact.name }}</strong>
-                               <p class="text-grey">Non ci sono nuovi messaggi!</p>
+                <div class="contacts-block">
+                    <ul>
+                        <li v-for='contact in usersList'>
+                            <div class="contacts border-grey" >
+                                <img :src="contact.avatar" alt="" class="contact-img">
+                                <div class="contact-text">
+                                   <strong>{{ contact.name }}</strong>
+                                   <p class="text-grey">Non ci sono nuovi messaggi!</p>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
-                <!-- <ol>
-                    <li v-for='contact in usersList' :key='contact.name'>
-                        {{ contact.name }}
-                    </li>
-                </ol> -->
-
+                        </li>
+                    </ul>
+                </div>
             </section>
             <section class="col-dx">
-
+                <!-- Sezione nome chat attualemnte aperta -->
+                <div class="chat-open bg-lightgrey border-grey border-grey-top">
+                    <div class="user-img">
+                        <img :src="usersList[0].avatar" alt="">
+                        <div class="chat-open-name">
+                            <strong>Nome</strong>
+                            <p class="text-grey">Ultimo Accesso ...</p>
+                         </div>
+                    </div>
+                    <div class="user-icons text-grey">
+                        <i class="fa fa-search text-grey" aria-hidden="true"></i>
+                        <i class="fa fa-paperclip" aria-hidden="true"></i>
+                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <!-- sezione chat -->
+                <div class="chat">
+                    <div class="msg">
+                        <div class="msg-sent">
+                            <div class="msg-sent-box bg-green">
+                                <p>inviato</p>
+                            </div>
+                        </div>
+                        <div class="msg-received">
+                            <div class="msg-received-box bg-white">
+                                <p>ricevuto</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- sezione new message -->
+                <div class="new-message search-bar bg-lightgrey border-grey border-grey-top">
+                    <i class="fa fa-smile-o text-grey" aria-hidden="true"></i>
+                    <input type="text" placeholder="Scrivi Un Messaggio">
+                    <i class="fa fa-microphone text-grey" aria-hidden="true"></i>
+                </div>
             </section>
         </section>
         <script src="app.js"></script>

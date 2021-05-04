@@ -30,17 +30,15 @@ p {
 .col-sx{
     width: 30%;
     height: 100%;
-    background-color: yellow;
-    /* display: flex;
-    flex-direction: column;
-    flex-grow: 1; */
 }
 .col-dx{
     width: 70%;
     height: 100%;
-    background-color: orange;
+    background-image: url(IMG/mine.jpg);
+    display: flex;
+    flex-direction: column;
 }
-.user-profile{
+.user-profile, .chat-open{
     height: 60px;
     display: flex;
 }
@@ -108,24 +106,67 @@ p {
     font-size: 0.8rem;
     left: 2.5%;
 }
+.contacts-block{
+    overflow: auto;
+    height: calc(100% - 175px);
+}
 .contacts{
     height: 80px;
     width: 100%;
-    display: flex;
     align-items: center;
-
+    display: flex;
+    background-color: white;
+}
+.contacts:hover{
+    background-color: #D7D7D7;
 }
 .contact-img{
     height: 80px;
     border-radius: 50%;
     padding: 8px;
 }
-.contact-text{
-    /* display: flex;
+.chat-open-name{
+    display: flex;
     flex-direction: column;
-    justify-content: center; */
+    justify-content: center;
 }
-
+.chat{
+    display: flex;
+    flex-grow: 1;
+    /* overflow: initial; */
+}
+.new-message{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    justify-content: space-between;
+}
+.new-message input{
+    padding: 0 15px;
+}
+.new-message i{
+    position: initial;
+    font-size: 1.2rem;
+    
+}
+.msg{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 8px;
+}
+.msg-sent-box, .msg-received-box{
+    border-radius: 4px;
+    padding: 10px;
+}
+.msg-sent{
+    display: flex;
+    justify-content: flex-end;
+}
+.msg-received{
+    display: flex;
+}
 
 
 
@@ -133,7 +174,10 @@ p {
 /* Utility Classes */
 .border-grey{
     border: 1px solid #D3D3D3;
-    border-bottom: 0px;
+    border-top: 0px;
+}
+.border-grey-top{
+    border-top: 1px solid #D3D3D3;
 }
 .text-grey{
     color: #7F7F7F;
@@ -146,4 +190,7 @@ p {
 }
 .bg-white{
     background-color: white;
+}
+.bg-green{
+    background-color: rgb(133, 202, 173);
 }
