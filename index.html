@@ -42,12 +42,12 @@
                 </div>
                 <!-- search bar -->
                 <div class="search-bar bg-lightgrey border-grey">
-                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    <input type="text" placeholder="Cerca o inizia una nuova chat" v-model='searchInput' @input='searchedChat'>
                     <i class="fa fa-search text-grey" aria-hidden="true"></i>
                 </div>
                 <!-- contacts list  -->
                 <div class="contacts-block">
-                    <div v-for='(contact, index) in usersList' :key='index' @click='selectedContact(contact)'>
+                    <div v-for='(contact, index) in searchedUsers' :key='index' @click='selectedContact(contact)'>
                         <div class="contacts border-grey">
                             <img :src="contact.avatar" alt="" class="contact-img">
                             <div class="contact-text">
@@ -76,15 +76,18 @@
                 </div>
                 <!-- sezione chat -->
                 <div class="chat">
-                    <div class="msg" :class="{msgsent: msg.status === 'sent' , msgreceived: msg.status === 'received'}" v-for='(msg, index) in selectedUser.messages' :key='index'>
-                        <p>{{msg.text}}</p>
-                        <p class="msg-date text-grey">{{msgTime(msg.date)}}</p>
+                    <div class="msg" v-for='(msg, index) in selectedUser.messages' :key='index'>
+                        <div :class="{boxarrowgreen: msg.status === 'sent' , boxarrowwhite: msg.status === 'received'}"></div>
+                        <div class='msg-box' :class="{msgsent: msg.status === 'sent' , msgreceived: msg.status === 'received'}">
+                            <p>{{msg.text}}</p>
+                            <p class="msg-date text-grey">{{msgTime(msg.date)}}</p>
+                        </div>
                     </div>
                 </div>
                 <!-- sezione new message -->
                 <div class="new-message search-bar bg-lightgrey border-grey border-grey-top">
                     <i class="fa fa-smile-o text-grey" aria-hidden="true"></i>
-                    <input type="text" placeholder="Scrivi Un Messaggio">
+                    <input type="text" placeholder="Scrivi Un Messaggio" v-model='newMsg' @keyup.enter='sendNewMsg'>
                     <i class="fa fa-microphone text-grey" aria-hidden="true"></i>
                 </div>
             </section>
