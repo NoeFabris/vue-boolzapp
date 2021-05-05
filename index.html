@@ -47,26 +47,24 @@
                 </div>
                 <!-- contacts list  -->
                 <div class="contacts-block">
-                    <ul>
-                        <li v-for='contact in usersList'>
-                            <div class="contacts border-grey" >
-                                <img :src="contact.avatar" alt="" class="contact-img">
-                                <div class="contact-text">
-                                   <strong>{{ contact.name }}</strong>
-                                   <p class="text-grey">Non ci sono nuovi messaggi!</p>
-                                </div>
+                    <div v-for='(contact, index) in usersList' :key='index' @click='selectedContact(contact)'>
+                        <div class="contacts border-grey">
+                            <img :src="contact.avatar" alt="" class="contact-img">
+                            <div class="contact-text">
+                               <strong>{{ contact.name }}</strong>
+                               <p class="text-grey">Non ci sono nuovi messaggi!</p>
                             </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
             </section>
             <section class="col-dx">
                 <!-- Sezione nome chat attualemnte aperta -->
                 <div class="chat-open bg-lightgrey border-grey border-grey-top">
                     <div class="user-img">
-                        <img :src="usersList[0].avatar" alt="">
+                        <img :src="selectedUser.avatar" alt="">
                         <div class="chat-open-name">
-                            <strong>Nome</strong>
+                            <strong>{{selectedUser.name}}</strong>
                             <p class="text-grey">Ultimo Accesso ...</p>
                          </div>
                     </div>
@@ -78,17 +76,9 @@
                 </div>
                 <!-- sezione chat -->
                 <div class="chat">
-                    <div class="msg">
-                        <div class="msg-sent">
-                            <div class="msg-sent-box bg-green">
-                                <p>inviato</p>
-                            </div>
-                        </div>
-                        <div class="msg-received">
-                            <div class="msg-received-box bg-white">
-                                <p>ricevuto</p>
-                            </div>
-                        </div>
+                    <div class="msg" :class="{msgsent: msg.status === 'sent' , msgreceived: msg.status === 'received'}" v-for='(msg, index) in selectedUser.messages' :key='index'>
+                        <p>{{msg.text}}</p>
+                        <p class="msg-date text-grey">{{msgTime(msg.date)}}</p>
                     </div>
                 </div>
                 <!-- sezione new message -->
@@ -99,6 +89,8 @@
                 </div>
             </section>
         </section>
+        <script src="moment.js"></script>
+        <script src="data.js"></script>
         <script src="app.js"></script>
     </main>
 </body>

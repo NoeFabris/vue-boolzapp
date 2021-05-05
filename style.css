@@ -120,6 +120,9 @@ p {
 .contacts:hover{
     background-color: #D7D7D7;
 }
+.contacts.selected {
+    background-color: lightgrey;
+}
 .contact-img{
     height: 80px;
     border-radius: 50%;
@@ -129,11 +132,6 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-.chat{
-    display: flex;
-    flex-grow: 1;
-    /* overflow: initial; */
 }
 .new-message{
     height: 50px;
@@ -150,23 +148,33 @@ p {
     font-size: 1.2rem;
     
 }
+.chat{
+    display: flex;     
+    flex-grow: 1;
+    flex-direction: column;
+    /* overflow: initial; */
+}
 .msg{
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
     margin: 8px;
-}
-.msg-sent-box, .msg-received-box{
     border-radius: 4px;
-    padding: 10px;
+    padding: 15px;
 }
-.msg-sent{
+.msgsent{
     display: flex;
-    justify-content: flex-end;
+    align-items: flex-end;
+    background-color: rgb(133, 202, 173);
 }
-.msg-received{
+.msgreceived{
     display: flex;
+    background-color: white;
 }
+.msg .msg-date{
+    font-size: 0.7rem;
+}
+
+
 
 
 
@@ -190,7 +198,4 @@ p {
 }
 .bg-white{
     background-color: white;
-}
-.bg-green{
-    background-color: rgb(133, 202, 173);
 }
