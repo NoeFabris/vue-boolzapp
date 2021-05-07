@@ -42,17 +42,21 @@
                 </div>
                 <!-- search bar -->
                 <div class="search-bar bg-lightgrey border-grey">
-                    <input type="text" placeholder="Cerca o inizia una nuova chat" v-model='searchInput' @input='searchedChat'>
-                    <i class="fa fa-search text-grey" aria-hidden="true"></i>
+                    <input type="text" placeholder="Cerca o inizia una nuova chat" v-model='searchInput'>
+                    <i class="fa fa-search lens text-grey" aria-hidden="true"></i>
+                    <i class="fa fa-times erase text-grey" v-if='searchInput' aria-hidden="true" @click='deleteInputSearch'></i>
                 </div>
                 <!-- contacts list  -->
                 <div class="contacts-block">
-                    <div v-for='(contact, index) in searchedUsers' :key='index' @click='selectedContact(contact)'>
+                    <div v-for='(contact, index) in searchedChat' :key='index' @click='selectedContact(contact)'>
                         <div class="contacts border-grey">
                             <img :src="contact.avatar" alt="" class="contact-img">
                             <div class="contact-text">
                                <strong>{{ contact.name }}</strong>
-                               <p class="text-grey">Non ci sono nuovi messaggi!</p>
+                               <div class="last-msg-time">
+                                   <p class="text-grey">{{lastMsg(contact.messages)}}</p>
+                                   <p class="text-grey">{{lastMsgTime(contact.messages)}}</p>
+                               </div>
                             </div>
                         </div>
                     </div>
@@ -65,7 +69,7 @@
                         <img :src="selectedUser.avatar" alt="">
                         <div class="chat-open-name">
                             <strong>{{selectedUser.name}}</strong>
-                            <p class="text-grey">Ultimo Accesso ...</p>
+                            <p class="text-grey">{{lastAccess(selectedUser.messages)}}</p>
                          </div>
                     </div>
                     <div class="user-icons text-grey">
@@ -81,6 +85,11 @@
                         <div class='msg-box' :class="{msgsent: msg.status === 'sent' , msgreceived: msg.status === 'received'}">
                             <p>{{msg.text}}</p>
                             <p class="msg-date text-grey">{{msgTime(msg.date)}}</p>
+                            <i class="fa fa-angle-down text-grey popup-arrow" aria-hidden="true"></i>
+                            <div class="popup bg-white">
+                                <p>Message info</p>
+                                <p>Delete Message</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,7 +97,8 @@
                 <div class="new-message search-bar bg-lightgrey border-grey border-grey-top">
                     <i class="fa fa-smile-o text-grey" aria-hidden="true"></i>
                     <input type="text" placeholder="Scrivi Un Messaggio" v-model='newMsg' @keyup.enter='sendNewMsg'>
-                    <i class="fa fa-microphone text-grey" aria-hidden="true"></i>
+                    <i class="fa fa-paper-plane text-grey" v-if='(newMsg)' @click='sendNewMsg'  aria-hidden="true"></i>
+                    <i class="fa fa-microphone text-grey" v-else aria-hidden="true"></i>
                 </div>
             </section>
         </section>

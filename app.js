@@ -5,52 +5,89 @@ const app = new Vue ({
         data: {
             usersList: globalUsersList,
             selectedUser: {},
-            searchedUsers: {},
             searchInput: '',
             newMsg: ''
         },
         computed: {
+            
             searchedChat() {
-                if (!this.searchInput) {
-                    console.log('no ricerche')
-                    this.searchedUsers = this.usersList
-                } else {
-                    console.log('ricerca')
 
-                    let search = this.usersList.filter((searchName) => searchName.name == this.searchInput )
-                    console.log(search)
-                    this.searchedUsers = search
-
-                }
-            }
+                return this.usersList.filter((element) => {
+                    return element.name.toLowerCase().startsWith(this.searchInput.toLowerCase())
+                }) 
+            },
         },
         methods: {
+            
             selectedContact(contact){
-                this.selectedUser = contact
+                return this.selectedUser = contact
             },
             msgTime(time) {
                 return moment(time, 'DD/MM/YYY HH:mm:ss').format('HH:mm')
             },
             sendNewMsg() {
+                
                 let msgFormat = {
                     date: moment().format('DD/MM/YYY HH:mm:ss'),
                     text: this.newMsg,
                     status : 'sent'
                 }
+                let openChat = this.selectedUser.name
                 this.selectedUser.messages.push(msgFormat);
-
+                
+                this.newMsg = ''
                 setTimeout(() => {
-                    let msgResponseFormat = {
-                        date: moment().format('DD/MM/YYY HH:mm:ss'),
-                        text: 'Ok',
-                        status : 'received'
+                    if (this.selectedUser.name === openChat) {
+                        let msgResponseFormat = {
+                            date: moment().format('DD/MM/YYY HH:mm:ss'),
+                            text: 'Ok',
+                            status : 'received'
+                        }
+                        this.selectedUser.messages.push(msgResponseFormat)
                     }
-                    this.selectedUser.messages.push(msgResponseFormat)
-                }, 1000) ()
-                // response() ({
-                // } 1000)
+                }, 1000) () 
+                
+            },
+            deleteInputSearch() {
+                this.searchInput = ''
+            },
+            lastMsg(chat) {
+                if ((chat.length) === 0) {
+                    return 'Non ci sono mesaggi'
+                } else {
+                    let lastMsg = chat[chat.length - 1]
+                    if (lastMsg.text.length > 20) {
+                        return lastMsg.text.slice(0, 20) + '...'
+                    } else {
+                        return lastMsg.text
+                    }
+                }
+            },
+            lastMsgTime(chat) {
+                if ((chat.length) === 0) {
+                    return
+                } else {
+                    let lastMsg = chat[chat.length - 1]
+                    return this.msgTime(lastMsg.date)
+                }
+            },
+            lastAccess(chat) {
+                if ((chat.length) === 0) {
+                    return ''
+                } else {
+                    let lastMsg = chat[chat.length - 1]
+                    if (lastMsg.status === 'received') {
+                        return `Ultimo accesso ${this.msgTime(lastMsg.date)}`
+                    } else {
+                        lastMsg = chat[chat.length - 2]
+                        if (lastMsg.status === 'received') {
+                            return `Ultimo accesso ${this.msgTime(lastMsg.date)}`
+                        }
+                        return 'Online'
+                    }
+                }
             }
-
+            
         }, 
         mounted(){
             this.selectedUser = this.usersList[0]
