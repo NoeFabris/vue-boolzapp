@@ -221,15 +221,24 @@ p {
 }
 .popup{
     position: absolute;
-    width: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    top: 18px;
-    left: 90px;
+    width: 180px;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.4);
+    overflow: hidden;
 }
-.popup  p:hover{
-    background-color: grey;
+.popup ul li{
+    padding: 8px 14px;
+}
+.popup  li:hover{
+    background-color: lightgray;
+}
+.msgsent .popup{
+    top: 19px;
+    left: 68px;
+}
+.msgreceived .popup{
+    top: 19px;
+    left: 90px;
 }
 
 
