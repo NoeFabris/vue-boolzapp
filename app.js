@@ -15,7 +15,7 @@ const app = new Vue ({
                 return this.usersList.filter((element) => {
                     return element.name.toLowerCase().startsWith(this.searchInput.toLowerCase())
                 }) 
-            },
+            }
         },
         methods: {
             
@@ -57,7 +57,7 @@ const app = new Vue ({
                 } else {
                     let lastMsg = chat[chat.length - 1]
                     if (lastMsg.text.length > 20) {
-                        return lastMsg.text.slice(0, 20) + '...'
+                        return (lastMsg.text).slice(0, 20) + '...'
                     } else {
                         return lastMsg.text
                     }
@@ -86,10 +86,28 @@ const app = new Vue ({
                         return 'Online'
                     }
                 }
+            },
+            showPopup(chat, event) {
+                chat.popUp = true
+                
+                event.currentTarget.focus()
+            },
+            mouseOut(chat){
+                chat.popUp = false
+            },
+            deleteMsg(index) {
+                this.selectedUser.messages.splice(index, 1)
+                chat.popUp = false
             }
             
         }, 
         mounted(){
             this.selectedUser = this.usersList[0]
+
+            this.usersList.forEach(user => {
+                user.messages.forEach(message => {
+                    this.$set(message, 'popUp', false)
+                });
+            });
         }
 })
